@@ -1,5 +1,5 @@
 # api_gerenciar_tarefas
-Desafio desenvolvimento de uma API para gerenciar cadastro de tarefas
+Desafio: Desenvolver uma API para gerenciar cadastro de tarefas
 
 ## REQUISITOS DA API 
 
