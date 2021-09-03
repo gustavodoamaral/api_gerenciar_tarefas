@@ -5,13 +5,13 @@ app = Flask(__name__)
 
 tarefas = [
     {
-        'id': 0,
+        'id': '0',
         'responsavel': 'Gustavo',
         'tarefa': 'Desenvolver APIs',
         'status': 'Concluida',
     },
     {
-        'id':1,
+        'id':'1',
         'responsavel': 'Caique',
         'tarefa': 'Arquitetura Back-End',
         'status': 'Pendente'
@@ -49,10 +49,13 @@ def tarefa(id):
             response = {'status':'erro', 'mensagem': mensagem}
         return jsonify(response)
 
-#    elif request.method == 'PUT':
-#        dados = json.loads(request.data)
-#        tarefas['id']['status'] = dados[id]
-#        return jsonify(dados)
+    elif request.method == 'PUT':
+        dados = json.loads(request.data)
+        if dados != tarefas[id]:
+            return 'apenas o status pode ser alterado'
+  #      tarefas[id] = dados
+   #     return jsonify(dados)
+ #       else:
 
     elif request.method == 'DELETE':
         tarefas.pop(id)
