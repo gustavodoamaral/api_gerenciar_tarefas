@@ -34,7 +34,7 @@ def lista_tarefas():
         return jsonify(tarefas)
 
 
-# DEVOLVE DELETA UMA TAREFA PELO ID
+# DEVOLVE E DELETA UMA TAREFA PELO ID
 
 @app.route('/tarefa/<int:id>/', methods=['GET', 'PUT', 'DELETE'])
 def tarefa(id):
@@ -49,18 +49,25 @@ def tarefa(id):
             response = {'status':'erro', 'mensagem': mensagem}
         return jsonify(response)
 
+# ALTERA O STATUS DA TAREFA, NENHUMA OUTRA ALTERAÇÃO É PERMITIDA ALÉM DO STATUS
+
     elif request.method == 'PUT':
         dados = json.loads(request.data)
-        if dados != tarefas[id]:
-            return 'apenas o status pode ser alterado'
-  #      tarefas[id] = dados
-   #     return jsonify(dados)
- #       else:
+        if dados['responsavel'] != tarefas[id]['responsavel']:
+            mensagem = 'Apenas o STATUS da tarefa pode ser alterado'
+            response = {'status':'erro', 'mensagem': mensagem}
+            return response
+        if dados['tarefa'] != tarefas[id]['tarefa']:
+            mensagem = 'Apenas o STATUS da tarefa pode ser alterado'
+            response = {'status':'erro', 'mensagem': mensagem}
+            return response
+        else:
+            tarefas[id] = dados
+            return "registro alterado"
 
     elif request.method == 'DELETE':
         tarefas.pop(id)
         return jsonify({'status': 'sucesso', 'mensagem': 'registro deletado'})
-
 
 
 if __name__ == '__main__':
