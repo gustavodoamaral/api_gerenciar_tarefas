@@ -1,5 +1,5 @@
 # api_gerenciar_tarefas
-Desafio: Desenvolver uma API para gerenciar cadastro de tarefas
+Desafio: Desenvolver uma API para gerenciar cadastro de tarefas utilizando framework FLASK
 
 ## REQUISITOS DA API 
 
